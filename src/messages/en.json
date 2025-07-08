@@ -1,0 +1,117 @@
+{
+  "header": {
+    "about": "About Me",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "mainSection": {
+    "title": "👋 Hello, I'm Do Bui Van",
+    "subtitle": "Full-Stack Developer",
+    "description": "Building modern web applications with JavaScript, TypeScript, React, and Node.js",
+    "about": "About Me",
+    "contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a full-stack developer with 1 year of experience in professional web application development. I started my career as a frontend developer but have since gained experience in backend development as well. I am eager to learn new technologies and apply them to product development. My goal is to advance to a higher position while continuously improving my skills.",
+    "education": "Education",
+    "educationDetail": "Posts and Telecommunications Institute of Technology | 2020-2025",
+    "major": "Major: Software Engineering"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "languages": "Programming Languages",
+    "languagesDetail": "JavaScript, TypeScript",
+    "databases": "Databases",
+    "databasesDetail": "MySQL, PostgreSQL, MongoDB",
+    "technologies": "Technologies",
+    "technologiesDetail": "NodeJS, ReactJS, NextJS, NestJS, RESTful API, GraphQL, Microservices, Tailwind, Redis, ElasticSearch, Kafka",
+    "specialization": "Specializations",
+    "frontend": "Front-end development (ReactJS, NextJS)",
+    "backend": "Back-end development and API development",
+    "other": "Django (Basic knowledge)"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "job1": {
+      "company": "FPT Smart Cloud",
+      "period": "Sep 2024 - Present",
+      "position": "Full-Stack Developer",
+      "duties": [
+        "Develop high-quality software",
+        "Define, prioritize, and execute tasks in the software development lifecycle",
+        "Coordinate with QA, BA, PO to ensure high quality product and code-base",
+        "Discuss with leader and team members to offer the best solution for the project",
+        "Collaborate with stakeholders to improve the product"
+      ]
+    },
+    "job2": {
+      "company": "Leatech JSC",
+      "period": "Apr 2024 - Sep 2024",
+      "position": "Fresher Developer",
+      "duties": [
+        "Utilized NodeJS to create APIs for web applications",
+        "Utilized NextJS and ReactJS to build applications",
+        "Utilized React Native and ReactJS to build applications"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "project1": {
+      "name": "AI Mentor",
+      "period": "Sep 2024 - Present",
+      "position": "Full-stack Developer",
+      "description": "Product arising from FCI's hackathon, with the purpose of building a mentor who accompanies users as a friend to help improve knowledge according to each user's specific job. Currently serving in the environment of FPT Corporation.",
+      "duties": [
+        "Worked as a full-stack developer, building a portal with MUI NextJS and developing APIs using NestJS and Django",
+        "Collaborate with team members and leader to plan and come up with solutions",
+        "Improve application performance",
+        "Collaborate with stakeholders to improve the product"
+      ],
+      "teamSize": "15",
+      "technologies": "NextJS, NestJS, Microservices, MySQL, PostgreSQL, N8n, Redis, Kafka, ElasticSearch",
+      "url": "https://mentor.fpt.ai"
+    },
+    "project2": {
+      "name": "Pagoda",
+      "period": "Apr 2024 - Sep 2024",
+      "position": "Backend Developer",
+      "description": "The system allows administrators to upload files, manage documents, and publish news articles efficiently. The application enhances accessibility and organization of pagoda-related information.",
+      "duties": [
+        "Worked as a backend developer, collaborating with frontend developers to create APIs for the application"
+      ],
+      "teamSize": "5",
+      "technologies": "NestJS, MySQL, Prisma"
+    },
+    "project3": {
+      "name": "Reikatachi",
+      "period": "Apr 2024 - Sep 2024",
+      "position": "Full-stack Developer",
+      "description": "Developed an e-commerce application that connects stores with customers, enabling seamless online transactions. The platform allows store owners to upload files, manage documents, and efficiently handle store operations.",
+      "duties": [
+        "Work as frontend developer build client with ReactJS and Ant Design",
+        "Work with design team and apply design to web"
+      ],
+      "teamSize": "5",
+      "technologies": "ReactJS, NestJS, AntD",
+      "url": "https://reikatachi.vn"
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "phone": "Phone",
+    "phoneValue": "0352294326",
+    "email": "Email",
+    "emailValue": "dobuivan.23@gmail.com",
+    "address": "Address",
+    "addressValue": "Quyet Thang - Ha Dong - Ha Noi",
+    "message": "Send me a message",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "send": "Send Message"
+  }
+}

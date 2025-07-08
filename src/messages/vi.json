@@ -1,0 +1,125 @@
+{
+  "header": {
+    "about": "Về Tôi",
+    "gallery": "Testimonials",
+    "projects": "Dự Án",
+    "caseStudies": "Liên Hệ",
+    "blogs": "Blogs",
+    "podcast": "Podcasts",
+    "skills": "Kỹ Năng",
+    "experience": "Kinh Nghiệm",
+    "contact": "Liên Hệ"
+  },
+  "mainSection": {
+    "title": "👋 Xin chào, Tôi là Bùi Văn Đô",
+    "subtitle": "Lập Trình Viên Full-Stack",
+    "description": "Xây dựng ứng dụng web hiện đại với JavaScript, TypeScript, React và Node.js",
+    "about": "Về Tôi",
+    "contact": "Liên Hệ",
+    "getStarted": "Bắt Đầu",
+    "learnMore": "Tìm Hiểu Thêm"
+  },
+
+
+  "about": {
+    "title": "Về Tôi",
+    "description": "Tôi là một lập trình viên full-stack với 1 năm kinh nghiệm trong phát triển ứng dụng web chuyên nghiệp. Tôi bắt đầu sự nghiệp của mình là một lập trình viên frontend nhưng đã có kinh nghiệm trong phát triển backend. Tôi luôn mong muốn học hỏi công nghệ mới và áp dụng vào phát triển sản phẩm.",
+    "education": "Học Vấn",
+    "educationDetail": "Học viện Công nghệ Bưu chính Viễn thông | 2020-2025",
+    "major": "Chuyên ngành: Kỹ thuật phần mềm"
+  },
+  "skills": {
+    "title": "Kỹ Năng Chuyên Môn",
+    "languages": "Ngôn Ngữ Lập Trình",
+    "languagesDetail": "JavaScript, TypeScript",
+    "databases": "Cơ Sở Dữ Liệu",
+    "databasesDetail": "MySQL, PostgreSQL, MongoDB",
+    "technologies": "Công Nghệ",
+    "technologiesDetail": "NodeJS, ReactJS, NextJS, NestJS, RESTful API, GraphQL, Microservices, Tailwind, Redis, ElasticSearch, Kafka",
+    "specialization": "Chuyên Môn",
+    "frontend": "Phát triển Front-end (ReactJS, NextJS)",
+    "backend": "Phát triển Back-end và API",
+    "other": "Django (Kiến thức cơ bản)"
+  },
+  "experience": {
+    "title": "Kinh Nghiệm Làm Việc",
+    "job1": {
+      "company": "FPT Smart Cloud",
+      "period": "09/2024 - Hiện tại",
+      "position": "Lập Trình Viên Full-Stack",
+      "duties": [
+        "Phát triển phần mềm chất lượng cao",
+        "Xác định, ưu tiên và thực hiện các nhiệm vụ trong vòng đời phát triển phần mềm",
+        "Phối hợp với QA, BA, PO để đảm bảo sản phẩm và cơ sở mã chất lượng cao",
+        "Thảo luận với lãnh đạo và thành viên để đưa ra giải pháp tốt nhất cho dự án",
+        "Hợp tác với các bên liên quan để cải thiện sản phẩm"
+      ]
+    },
+    "job2": {
+      "company": "Leatech JSC",
+      "period": "04/2024 - 09/2024",
+      "position": "Lập Trình Viên Fresher",
+      "duties": [
+        "Sử dụng NodeJS để tạo API cho ứng dụng web",
+        "Sử dụng NextJS và ReactJS để xây dựng ứng dụng",
+        "Sử dụng React Native và ReactJS để xây dựng ứng dụng"
+      ]
+    }
+  },
+  "projects": {
+    "title": "Dự Án",
+    "project1": {
+      "name": "AI Mentor",
+      "period": "09/2024 - Hiện tại",
+      "position": "Lập Trình Viên Full-stack",
+      "description": "Sản phẩm phát sinh từ hackathon của FCI, với mục đích xây dựng một mentor đồng hành cùng người dùng như một người bạn để giúp nâng cao kiến thức theo công việc cụ thể của từng người dùng. Hiện đang phục vụ trong môi trường của Tập đoàn FPT.",
+      "duties": [
+        "Làm việc với tư cách là lập trình viên full-stack, xây dựng cổng thông tin với MUI NextJS và phát triển API sử dụng NestJS và Django",
+        "Hợp tác với các thành viên trong nhóm và lãnh đạo để lập kế hoạch và đưa ra giải pháp",
+        "Cải thiện hiệu suất ứng dụng",
+        "Hợp tác với các bên liên quan để cải thiện sản phẩm"
+      ],
+      "teamSize": "15",
+      "technologies": "NextJS, NestJS, Microservices, MySQL, PostgreSQL, N8n, Redis, Kafka, ElasticSearch",
+      "url": "https://mentor.fpt.ai"
+    },
+    "project2": {
+      "name": "Pagoda",
+      "period": "04/2024 - 09/2024",
+      "position": "Lập Trình Viên Backend",
+      "description": "Hệ thống cho phép quản trị viên tải lên tệp, quản lý tài liệu và xuất bản các bài báo một cách hiệu quả. Ứng dụng nâng cao khả năng tiếp cận và tổ chức thông tin liên quan đến chùa.",
+      "duties": [
+        "Làm việc với tư cách là lập trình viên backend, hợp tác với các lập trình viên frontend để tạo API cho ứng dụng"
+      ],
+      "teamSize": "5",
+      "technologies": "NestJS, MySQL, Prisma"
+    },
+    "project3": {
+      "name": "Reikatachi",
+      "period": "04/2024 - 09/2024",
+      "position": "Lập Trình Viên Full-stack",
+      "description": "Phát triển ứng dụng thương mại điện tử kết nối các cửa hàng với khách hàng, cho phép giao dịch trực tuyến liền mạch. Nền tảng cho phép chủ cửa hàng tải lên tệp, quản lý tài liệu và xử lý hoạt động cửa hàng một cách hiệu quả.",
+      "duties": [
+        "Làm việc với tư cách là lập trình viên frontend xây dựng giao diện người dùng với ReactJS và Ant Design",
+        "Làm việc với nhóm thiết kế và áp dụng thiết kế vào web"
+      ],
+      "teamSize": "5",
+      "technologies": "ReactJS, NestJS, AntD",
+      "url": "https://reikatachi.vn"
+    }
+  },
+  "contact": {
+    "title": "Liên Hệ",
+    "phone": "Điện Thoại",
+    "phoneValue": "0352294326",
+    "email": "Email",
+    "emailValue": "dobuivan.23@gmail.com",
+    "address": "Địa Chỉ",
+    "addressValue": "Quyết Thắng - Hà Đông - Hà Nội",
+    "message": "Gửi tin nhắn cho tôi",
+    "yourName": "Tên của bạn",
+    "yourEmail": "Email của bạn",
+    "yourMessage": "Tin nhắn của bạn",
+    "send": "Gửi tin nhắn"
+  }
+}
