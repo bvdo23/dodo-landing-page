@@ -10,7 +10,7 @@ export default function LocaleSwitcher() {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const switchLocale = ({ nextLocale }) => {
+  const switchLocale = ({ nextLocale }: { nextLocale: "en" | "vi" }) => {
     startTransition(() => {
       const newPathname = pathname.replace(`/${locale}`, `/${nextLocale}`);
       router.replace(newPathname);

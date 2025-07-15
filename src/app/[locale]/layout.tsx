@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import type { ReactNode } from "react";
 import "../../style/globals.css";
 
 const inter = Inter({
@@ -15,11 +16,13 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: { locale: string };
 }) {
+  const { locale } = params;
+
   if (locale !== "en" && locale !== "vi") {
     notFound();
   }
