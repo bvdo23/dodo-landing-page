@@ -100,7 +100,8 @@ export default function HomePage() {
       <button
         className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition mb-4"
         onClick={async () => {
-          console.log("01");
+          window.confirm("Click to get deep link") &&
+            console.log("Getting deep link...");
           const deepLink = await getDeepLink({
             redirectUrl:
               "https://www.youtube.com/watch?v=HBhggSpKubU&ab_channel=FEsports",
