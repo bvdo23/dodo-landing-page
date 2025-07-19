@@ -4,13 +4,117 @@ import { useTranslations } from "next-intl";
 import Header from "./header";
 import MainSection from "./main-section";
 
+type DeepLinkParams = {
+  redirectUrl: string;
+  bankName: string; // BankNameEnum
+  type: string; // DeepLinkEnum
+  qrCode: string;
+  clientId: string;
+  timestamp: string;
+};
+
 export default function HomePage() {
   const t = useTranslations();
+
+  interface GetDeepLinkHeaders {
+    "x-client-id": string;
+    "x-request-timestamp": string;
+    "x-signature": string;
+  }
+
+  interface GetDeepLinkResponse {
+    location: string;
+  }
+
+  async function getDeepLink(params: DeepLinkParams): Promise<string> {
+    const url = new URL("http://localhost:6004/v1/deep-link");
+    url.searchParams.append("redirectUrl", params.redirectUrl);
+    url.searchParams.append("bankName", params.bankName);
+    url.searchParams.append("type", params.type);
+    url.searchParams.append("qrCode", params.qrCode);
+
+    // Lấy dấu thời gian theo định dạng yyyyMMddHHmmssSSS
+    const pad = (n: number, width: number) => n.toString().padStart(width, "0");
+    const now = new Date();
+    const timestamp =
+      now.getFullYear().toString() +
+      pad(now.getMonth() + 1, 2) +
+      pad(now.getDate(), 2) +
+      pad(now.getHours(), 2) +
+      pad(now.getMinutes(), 2) +
+      pad(now.getSeconds(), 2) +
+      pad(now.getMilliseconds(), 3);
+
+    // Chuỗi cần hash: "{x-request-timestamp}:{request body convert về string}"
+    const requestBody = {
+      redirectUrl: params.redirectUrl,
+      bankName: params.bankName,
+      type: params.type,
+      qrCode: params.qrCode,
+    };
+    const requestBodyString = JSON.stringify(requestBody);
+    const dataToSign = `${timestamp}:${requestBodyString}`;
+
+    // HMAC SHA512 với key là Secret token
+    const secret = "JSkoInvQBgRQI+8biDfdqMA6qyhTk8tm4x+5+N9y/mI=";
+    // Chuyển key sang Uint8Array
+    const enc = new TextEncoder();
+    const key = await window.crypto.subtle.importKey(
+      "raw",
+      enc.encode(secret),
+      { name: "HMAC", hash: "SHA-512" },
+      false,
+      ["sign"]
+    );
+    // Tạo signature
+    const signatureBuffer = await window.crypto.subtle.sign(
+      "HMAC",
+      key,
+      enc.encode(dataToSign)
+    );
+    // Convert signature sang base64
+    const signatureArray = Array.from(new Uint8Array(signatureBuffer));
+    const signature = btoa(String.fromCharCode(...signatureArray));
+
+    const res: Response = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "x-client-id": "0440bd40752203ada9855f9fdde7eb31",
+        "x-request-timestamp": timestamp,
+        "x-signature": signature,
+      },
+      redirect: "manual", // Để lấy URL redirect thay vì tự động chuyển hướng
+    });
+
+    // Nếu backend trả về redirect, lấy URL từ header Location
+    if (res.status === 302) {
+      return res.headers.get("Location") as string;
+    }
+    throw new Error("Không lấy được deeplink");
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
+      <button
+        className="bg-blue-600 text-white px-6 py-2 rounded font-medium hover:bg-blue-700 transition mb-4"
+        onClick={async () => {
+          console.log("01");
+          const deepLink = await getDeepLink({
+            redirectUrl:
+              "https://www.youtube.com/watch?v=HBhggSpKubU&ab_channel=FEsports",
+            bankName: "ACB",
+            type: "qr-code",
+            qrCode: "sample-qr-code",
+            clientId: "0440bd40752203ada9855f9fdde7eb31",
+            timestamp: new Date().toISOString(),
+          });
+          console.log(deepLink);
+        }}
+      >
+        click
+      </button>
       <main className="flex-grow">
         <MainSection />
 
