@@ -97,7 +97,7 @@ export default function HomePage() {
     <>
       <a
         href="
-          http://localhost:6004/v1/deep-link?redirectUrl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHBhggSpKubU%26ab_channel%3DFEsports&bankName=ACB&type=qr-code&qrCode=sample-qr-code"
+          https://l1h800nt-6004.asse.devtunnels.ms/v1/deep-link?redirectUrl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHBhggSpKubU%26ab_channel%3DFEsports&bankName=ACB&type=qr-code&qrCode=sample-qr-code"
       >
         click
       </a>
