@@ -3,18 +3,17 @@
 import { useTranslations } from "next-intl";
 import Header from "./header";
 import MainSection from "./main-section";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 type DeepLinkParams = {
-  redirectUrl: string;
   bankName: string; // BankNameEnum
-  type: string; // DeepLinkEnum
-  qrCode: string;
-  clientId: string;
-  timestamp: string;
+  accountNumber: string; // qrCode
 };
 
 export default function HomePage() {
   const t = useTranslations();
+
+  const [qrCode, setQrCode] = useState<string>("");
 
   interface GetDeepLinkHeaders {
     "x-client-id": string;
@@ -26,12 +25,8 @@ export default function HomePage() {
     location: string;
   }
 
-  async function getDeepLink(params: DeepLinkParams): Promise<string> {
-    const url = new URL("http://localhost:6004/v1/deep-link");
-    url.searchParams.append("redirectUrl", params.redirectUrl);
-    url.searchParams.append("bankName", params.bankName);
-    url.searchParams.append("type", params.type);
-    url.searchParams.append("qrCode", params.qrCode);
+  async function getDeepLink(params: DeepLinkParams): Promise<any> {
+    const url = new URL("http://localhost:6004/v1/generate-viet-qr");
 
     // Lấy dấu thời gian theo định dạng yyyyMMddHHmmssSSS
     const pad = (n: number, width: number) => n.toString().padStart(width, "0");
@@ -47,17 +42,16 @@ export default function HomePage() {
 
     // Chuỗi cần hash: "{x-request-timestamp}:{request body convert về string}"
     const requestBody = {
-      redirectUrl: params.redirectUrl,
       bankName: params.bankName,
-      type: params.type,
-      qrCode: params.qrCode,
+      accountNumber: params.accountNumber, // assuming qrCode is accountNumber
+      amount: 10000,
+      content: "string",
     };
     const requestBodyString = JSON.stringify(requestBody);
     const dataToSign = `${timestamp}:${requestBodyString}`;
 
     // HMAC SHA512 với key là Secret token
     const secret = "JSkoInvQBgRQI+8biDfdqMA6qyhTk8tm4x+5+N9y/mI=";
-    // Chuyển key sang Uint8Array
     const enc = new TextEncoder();
     const key = await window.crypto.subtle.importKey(
       "raw",
@@ -66,38 +60,46 @@ export default function HomePage() {
       false,
       ["sign"]
     );
-    // Tạo signature
     const signatureBuffer = await window.crypto.subtle.sign(
       "HMAC",
       key,
       enc.encode(dataToSign)
     );
-    // Convert signature sang base64
     const signatureArray = Array.from(new Uint8Array(signatureBuffer));
     const signature = btoa(String.fromCharCode(...signatureArray));
 
     const res: Response = await fetch(url.toString(), {
-      method: "GET",
+      method: "POST",
       headers: {
+        "Content-Type": "application/json",
         "x-client-id": "0440bd40752203ada9855f9fdde7eb31",
         "x-request-timestamp": timestamp,
         "x-signature": signature,
       },
-      redirect: "manual", // Để lấy URL redirect thay vì tự động chuyển hướng
+      body: requestBodyString,
+      redirect: "manual",
     });
 
-    // Nếu backend trả về redirect, lấy URL từ header Location
     if (res.status === 302) {
       return res.headers.get("Location") as string;
     }
     throw new Error("Không lấy được deeplink");
   }
+  useEffect(() => {
+    const fetchDeepLink = async () => {
+      const res = await getDeepLink({
+        bankName: "ACB",
+        accountNumber: "0129837294",
+      });
+      setQrCode(res.data.qrCode);
+    };
+    fetchDeepLink();
+  }, []);
 
   return (
     <>
       <a
-        href="
-          https://l1h800nt-6004.asse.devtunnels.ms/v1/deep-link?redirectUrl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHBhggSpKubU%26ab_channel%3DFEsports&bankName=ACB&type=qr-code&qrCode=sample-qr-code"
+        href={`https://l1h800nt-6004.asse.devtunnels.ms/v1/deep-link?redirectUrl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHBhggSpKubU%26ab_channel%3DFEsports&bankName=ACB&type=qr-code&qrCode=${qrCode}`}
       >
         click
       </a>
