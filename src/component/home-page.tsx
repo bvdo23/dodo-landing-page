@@ -26,7 +26,9 @@ export default function HomePage() {
   }
 
   async function getDeepLink(params: DeepLinkParams): Promise<any> {
-    const url = new URL("http://localhost:6004/v1/generate-viet-qr");
+    const url = new URL(
+      "https://l1h800nt-6004.asse.devtunnels.ms/v1/generate-viet-qr"
+    );
 
     // Lấy dấu thời gian theo định dạng yyyyMMddHHmmssSSS
     const pad = (n: number, width: number) => n.toString().padStart(width, "0");
